@@ -8,7 +8,7 @@ import { useEffect, useMemo, useState } from 'react';
 type Pt = [number, number];
 
 // ===== Icono 3D del coche
-const carIcon = L.icon({
+const carIcon = (L as any).icon({
   iconUrl: '/icons/car-3d.svg',
   iconSize: [48, 48],
   iconAnchor: [24, 36],
@@ -54,8 +54,14 @@ function badgeDataUrl(name: string) {
 }
 function photoIcon(url: string | undefined, name: string) {
   const iconUrl = url || badgeDataUrl(name);
-  return L.icon({ iconUrl, iconSize: [44, 44], iconAnchor: [22, 22], className: 'stop-photo' });
+  return (L as any).icon({ iconUrl, iconSize: [44, 44], iconAnchor: [22, 22], className: 'stop-photo' });
 }
+
+const MapContainerTyped: any = MapContainer;
+const TileLayerTyped: any = TileLayer;
+const PolylineTyped: any = Polyline;
+const MarkerTyped: any = Marker;
+const TooltipTyped: any = Tooltip;
 
 export default function MapIceland() {
   const [roadRoute, setRoadRoute] = useState<Pt[] | null>(null);
@@ -86,20 +92,28 @@ export default function MapIceland() {
 
   return (
     <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-800">
-      <MapContainer
+      <MapContainerTyped
         center={[64.8, -18]}
         zoom={6}
         style={{ height: 420, width: '100%' }}
         scrollWheelZoom={false}
       >
-        <TileLayer
+        <TileLayerTyped
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution="&copy; OpenStreetMap contributors"
         />
 
-        {roadRoute && <Polyline positions={roadRoute} />}
+        {roadRoute && <PolylineTyped positions={roadRoute} />}
 
         {stops.map((s, i) => (
-          <Marker key={i} position={[s.lat, s.lng] as Pt} icon={photoIcon(s.img, s.name)}>
-            <Tooltip>{`${i + 1}. ${s.name}`}</Tooltip>
-          </Marker>
+          <MarkerTyped key={i} position={[s.lat, s.lng] as Pt} icon={photoIcon(s.img, s.name)}>
+            <TooltipTyped>{`${i + 1}. ${s.name}`}</TooltipTyped>
+          </MarkerTyped>
+        ))}
+
+        {roadRoute && <MarkerTyped position={position} icon={carIcon} />}
+      </MapContainerTyped>
+    </div>
+  );
+}
+
