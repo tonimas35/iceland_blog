@@ -4,7 +4,7 @@
 - Node.js LTS (20 o 22) y npm
 - Git
 - (Opcional) VS Code
-
+- Clave API de OpenRouteService (`ORS_API_KEY`) definida en el entorno. Regístrate en https://openrouteservice.org/ para obtenerla y configúrala con `export ORS_API_KEY=tu_clave`.
 ## Arranque
 ```bash
 npm install
