@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1">
+      <stop offset="0" stop-color="#9aa4ad"></stop>
+      <stop offset="1" stop-color="#dfe3e6"></stop>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2d333a"></stop>
+      <stop offset="1" stop-color="#15191d"></stop>
+    </linearGradient>
+    <radialGradient id="shine" cx="0.3" cy="0.2" r="0.8">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.65"></stop>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"></stop>
+    </radialGradient>
+  </defs>
+
+  <!-- sombra suave debajo -->
+  <ellipse cx="32" cy="54" rx="18" ry="6" fill="#000" opacity="0.25"></ellipse>
+
+  <!-- carrocería (capó a izquierda, maletero a derecha) con perspectiva -->
+  <path d="M10 34 L18 22 C20 19 23 18 30 18 L42 18 C48 18 50 20 52 23 L58 32 L58 42 C58 45 56 47 53 47 L12 47 C10 47 8 45 8 43 L8 37 C8 35 9 34 10 34 Z" fill="url(#g1)" stroke="#6b7278" stroke-width="1"></path>
+  <!-- parabrisas/ventanas -->
+  <path d="M20 23 L30 20 L44 20 C47 20 49 21 50 24 L52 28 L20 28 Z" fill="#7fb3ff" opacity="0.65"></path>
+  <rect x="22" y="29" width="12" height="6" rx="1" fill="#7fb3ff" opacity="0.6"></rect>
+  <rect x="36" y="29" width="12" height="6" rx="1" fill="#7fb3ff" opacity="0.6"></rect>
+
+  <!-- parrilla / frontal -->
+  <rect x="11" y="36" width="8" height="6" rx="1" fill="url(#g2)"></rect>
+  <!-- luces -->
+  <circle cx="55" cy="36" r="2.8" fill="#ffd45a"></circle>
+  <circle cx="55" cy="42" r="2.8" fill="#ffd45a"></circle>
+
+  <!-- ruedas con brillo -->
+  <g>
+    <circle cx="22" cy="48" r="6.2" fill="url(#g2)"></circle>
+    <circle cx="42" cy="48" r="6.2" fill="url(#g2)"></circle>
+    <circle cx="22" cy="48" r="2.6" fill="#c7ccd1"></circle>
+    <circle cx="42" cy="48" r="2.6" fill="#c7ccd1"></circle>
+  </g>
+
+  <!-- brillo de carrocería -->
+  <ellipse cx="28" cy="26" rx="16" ry="8" fill="url(#shine)"></ellipse>
+</svg>

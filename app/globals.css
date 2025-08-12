@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --bg: #0b1016; --card: #121821; }
+body { @apply bg-gray-950 text-gray-100; }
+
+/* fotos redondas (si hay imagen) */
+.leaflet-marker-icon.stop-photo {
+  border-radius: 9999px;
+  border: 2px solid rgba(255,255,255,.95);
+  box-shadow: 0 6px 18px rgba(0,0,0,.35);
+  object-fit: cover;
+}
+
+/* sombra para el coche */
+.leaflet-marker-icon.car-3d {
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,.35));
+}
