@@ -88,7 +88,7 @@ export default function MapIceland() {
     return () => clearInterval(id);
   }, [roadRoute]);
 
-  const position = useMemo<Pt>(() => (roadRoute?.[idx] || [64.8, -18]) as Pt, [roadRoute, idx]);
+  const position = useMemo(() => (roadRoute?.[idx] || [64.8, -18]) as Pt, [roadRoute, idx]) as Pt;
 
   return (
     <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-800">
