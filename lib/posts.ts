@@ -16,8 +16,9 @@ export function getAllPosts(): Post[] {
   }).sort((a,b) => (a.meta.date || '').localeCompare(b.meta.date || ''));
 }
 
-export function getPost(slug: string) {
+export function getPost(slug: string): { meta: any; content: string } | null {
   const full = path.join(contentDir, `${slug}.mdx`);
+  if (!fs.existsSync(full)) return null;
   const { data, content } = matter(fs.readFileSync(full, 'utf8'));
   return { meta: data as any, content };
 }
